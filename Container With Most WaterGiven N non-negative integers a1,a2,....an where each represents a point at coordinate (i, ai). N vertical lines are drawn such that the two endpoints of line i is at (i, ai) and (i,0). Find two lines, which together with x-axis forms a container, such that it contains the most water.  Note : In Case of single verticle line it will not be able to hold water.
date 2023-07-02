@@ -1,0 +1,49 @@
+//Container With Most Water
+//Given N non-negative integers a1,a2,....an where each represents a point at coordinate (i, ai). N vertical lines are drawn such that the two endpoints of line i is at (i, ai) and (i,0). Find two lines, which together with x-axis forms a container, such that it contains the most water.
+
+//Note : In Case of single verticle line it will not be able to hold water.
+
+#User function Template for python3
+
+
+
+def maxArea(A,le):
+    #code here
+    l,r = 0,le-1
+    h = max(A)
+    res = 0
+    
+    while l<r:
+        
+        res = max(res,min(A[r],A[l])*(r-l))
+        
+        if A[l]>=A[r]:
+            r-=1
+            
+        elif A[r]>A[l]:
+            l+=1
+            
+        if (r-l) * h <= res:
+            break
+        
+    return res
+    
+    
+    
+    
+
+#{ 
+ # Driver Code Starts
+#Initial Template for Python 3
+
+
+
+for _ in range(0,int(input())):
+    
+    n = int(input())
+    l = list(map(int,input().split()))
+    
+    print(maxArea(l,n))
+    
+    
+# } Driver Code Ends
